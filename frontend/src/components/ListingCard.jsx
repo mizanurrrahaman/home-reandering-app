@@ -40,40 +40,43 @@ const ListingCard = ({listingId,
     }
   
     // wishlist
-    const user = useSelector((state) => state?.user?.user)
-    console.log(user)
-
-     //const wishList = user?.wishList || []
-     const wishList = user?.wishList || []
-     console.log(wishList)
-    
-    const isAddToWishList = wishList?.find((item) => item?._id === listingId)
-    const dispatch = useDispatch()
-
-
-    const patchWishList = async ()=>{
-      if(user?._id !== creator._id){
-         const response = await fetch(
-          `http://localhost:3000/api/user/${user?._id}/${listingId}`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-         )
-         const data = await response.json()
-         dispatch(setWishList(data.wishList))
-      } else {
-        return
-      }
-    }
-
     {/*
       const user = useSelector((state) => state?.user?.user)
-    
+      console.log(user)
+  
+       //const wishList = user?.wishList || []
+       const wishList = user?.wishList || []
+       console.log(wishList)
+      
+      const isAddToWishList = wishList?.find((item) => item?._id === listingId)
+      const dispatch = useDispatch()
+  
+  
+      const patchWishList = async ()=>{
+        if(user?._id !== creator._id){
+           const response = await fetch(
+            `http://localhost:3000/api/user/${user?._id}/${listingId}`,
+            {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+           )
+           const data = await response.json()
+           dispatch(setWishList(data.wishList))
+        } else {
+          return
+        }
+      }
+
+    */}
+
+  
+      const user = useSelector((state) => state?.user?.user)
+      console.log(user)
       const wishList = user?.wishList || []
-    
+       console.log(wishList)
       const isAddToWishList = wishList?.find((item) => item?._id === listingId)
     
       const dispatch = useDispatch()
@@ -98,7 +101,7 @@ const ListingCard = ({listingId,
         }
       }
 
-    */}
+   
 
 
   return (

@@ -60,3 +60,29 @@ export const addListingToWishList = async (req, res, next) =>{
        next(error)
     }
 }
+
+export const getPropertyList = async (req, res, next) =>{
+   try {
+      const  { userId } = req.params
+
+      const properties = await Listing.find({creator: userId}).populate(
+         "creator"
+      )
+      res.status(200).json(properties)
+   } catch (error) {
+      next(error)
+   }
+}
+
+export const getReservationList = async (req, res, next) => {
+   try {
+      const  { userId } = req.params
+      const reservations = await Booking.find({hostId: userId}).populate(
+         "customerId hostId listingId"
+      )
+
+      res.status(200).json(reservations)
+   } catch (error) {
+      next(error)
+   }
+}

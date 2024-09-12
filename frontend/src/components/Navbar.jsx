@@ -62,7 +62,8 @@ const Navbar = () => {
                  <div className="absolute bg-white right-15 sm:right-5 top-20 flex flex-col w-48 p-2.5 border border-gray-300 rounded-2xl shadow-lg z-[99]">
                    <Link to={`/${user?.user?._id}/trips`} className="w-full px-4 py-2 text-slate-500 no-underline font-bold hover:text-blue-500">Trips List </Link>
                    <Link to={`/${user?.user?._id}/wishList`} className="w-full px-4 py-2 text-slate-500 no-underline font-bold hover:text-blue-500">Wish List </Link>
-                   <Link to={`/${user?.user?._id}/properties`} className="w-full px-4 py-2 text-slate-500 no-underline font-bold hover:text-blue-500">Reservation List </Link>
+                   <Link to={`/${user?.user?._id}/properties`} className="w-full px-4 py-2 text-slate-500 no-underline font-bold hover:text-blue-500">Propertie List </Link>
+                   <Link to={`/${user?.user?._id}/reservations`} className="w-full px-4 py-2 text-slate-500 no-underline font-bold hover:text-blue-500">Reservation List </Link>
                    <Link to={"/create-listing"} className="w-full px-4 py-2 text-slate-500 no-underline font-bold hover:text-blue-500">Become A Host </Link>
                    <Link to={"/login"} className="w-full px-4 py-2 text-slate-500 no-underline font-bold hover:text-blue-500" onClick={()=> dispatch(setLogout())}>Log Out </Link>
                  </div>

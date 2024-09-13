@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { IoSearch } from "react-icons/io5";
 //import { useSelector } from "react-redux";
 import { useDispatch, useSelector } from "react-redux"
@@ -13,7 +13,9 @@ const Navbar = () => {
      const [dropdownMenu, setDropdownMenu] = useState(false)
 
      const dispatch = useDispatch()
-
+     const [search, setSearch] = useState("")
+     
+     const navigate = useNavigate()
   return (
     <div className="py-[10px] sm:py-[10px] px-[20px] sm:px-[60px] flex justify-between items-center relative ">
       <Link to={"/"}>
@@ -23,8 +25,10 @@ const Navbar = () => {
       </Link>
 
        <div className="hidden lg:flex border border-gray-500 rounded-[30px] h-[50px] px-5 gap-10 items-center ">
-         <input type="text" placeholder="Search...." className=" focus:outline-none bg-transparent"/>
-          <IoSearch className="text-slate-600 w-6 h-6"/>
+         <input type="text" placeholder="Search...." className=" focus:outline-none bg-transparent" value={search} onChange={(e) => setSearch(e.target.value)}/>
+          <button disabled={search.trim() === ""} onClick={()=> navigate(`/listings/search/${search}`)}> 
+            <IoSearch className="text-slate-600 w-6 h-6"/>
+          </button>
        </div>
         <div className="flex items-center gap-5">
            { user ? (<Link to={"/create-listing"} className="hidden sm:block no-underline text-slate-500 font-bold cursor-pointer hover:text-blue-500">

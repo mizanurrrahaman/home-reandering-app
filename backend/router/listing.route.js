@@ -1,6 +1,6 @@
   import express from  "express" 
   import multer from "multer"
-  import { createListing, getListingDetails, getListings } from "../controller/listing.controller.js"
+  import { createListing, getListingDetails, getListings, getListingsBySearch } from "../controller/listing.controller.js"
   
   const storage = multer.diskStorage({
      destination: function(req, file, cb) {
@@ -18,7 +18,7 @@
   router.post("/create", upload.array("listingPhotos"), createListing)
   router.get("/", getListings)
   router.get("/:listingId", getListingDetails)
-
+  router.get("/search/:search", getListingsBySearch)
   
   export default router
 
